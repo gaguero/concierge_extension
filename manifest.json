@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "name": "Gmail Profile Viewer",
+    "version": "1.0",
+    "description": "View profile information from AppSheet based on email sender in Gmail.",
+    "permissions": [
+      "activeTab",
+      "identity",
+      "https://www.googleapis.com/",
+      "storage"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://mail.google.com/*"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+      }
+    },
+    "oauth2": {
+      "client_id": "945967510746-9de5oulhm9pa243k01hfgnrve34iunp8.apps.googleusercontent.com",
+      "scopes": [
+        "https://www.googleapis.com/auth/gmail.readonly"
+      ]
+    }
+  }
+  
