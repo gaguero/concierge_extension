@@ -1,22 +1,18 @@
-<<<<<<< HEAD
+console.log("Content script loaded");
+
+function getEmailSenders() {
+  const emailElements = document.querySelectorAll('.gD');
+  const emails = Array.from(emailElements)
+                      .map(element => element.getAttribute('email'))
+                      .filter(email => !email.includes('@nayara'));
+  const uniqueEmails = Array.from(new Set(emails));
+  return uniqueEmails;
+}
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === 'GET_EMAIL') {
-      const emailElement = document.querySelector('.gD'); // Adjust selector as necessary
-      const email = emailElement ? emailElement.getAttribute('email') : null;
-      if (email) {
-        chrome.runtime.sendMessage({type: 'EMAIL_FETCHED', email: email, token: message.token});
-      }
-    }
-  });
-=======
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === 'GET_EMAIL') {
-      const emailElement = document.querySelector('.gD'); // Adjust selector as necessary
-      const email = emailElement ? emailElement.getAttribute('email') : null;
-      if (email) {
-        chrome.runtime.sendMessage({type: 'EMAIL_FETCHED', email: email, token: message.token});
-      }
-    }
-  });
->>>>>>> 84c20e1 (Add initial extension files)
-  
+  if (message.action === 'getEmails') {
+    const emails = getEmailSenders();
+    console.log("Emails found:", emails);
+    sendResponse({emails: emails});
+  }
+});

@@ -1,20 +1,8 @@
-<<<<<<< HEAD
 body {
-    font-family: Arial, sans-serif;
-    padding: 10px;
-  }
-  
-  #profile-info {
-    white-space: pre-wrap;
-  }
-=======
-body {
-    font-family: Arial, sans-serif;
-    padding: 10px;
-  }
-  
-  #profile-info {
-    white-space: pre-wrap;
-  }
->>>>>>> 84c20e1 (Add initial extension files)
-  
+  font-family: Arial, sans-serif;
+  padding: 10px;
+}
+
+#profile-info {
+  white-space: pre-wrap;
+}
